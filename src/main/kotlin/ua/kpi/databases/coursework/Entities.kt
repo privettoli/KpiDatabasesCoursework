@@ -5,8 +5,4 @@ package ua.kpi.databases.coursework
  * Here are listed entities of the project
  */
 
-data class TechnologicalSmth(var id: Int,
-                            var name: String,
-                            var month: Byte,
-                            var fuelConsumptionLiters: Float,
-                            var processingTimeWeeks: Float)
+data class Plant(var id: Int, var name: String, var area: Float)
