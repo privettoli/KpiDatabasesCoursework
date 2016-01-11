@@ -4,7 +4,7 @@
 CREATE TABLE `plants` (
   `id`         INT UNSIGNED                NOT NULL,
   `name`       VARCHAR(255) UNIQUE         NOT NULL,
-  `aread_ares` DECIMAL(7, 2) UNSIGNED      NOT NULL,
+  `area_ares` DECIMAL(7, 2) UNSIGNED      NOT NULL,
   PRIMARY KEY (`id`)
 );
 -- ROLLBACK DROP TABLE `plants`;
