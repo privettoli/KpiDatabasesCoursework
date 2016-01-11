@@ -27,6 +27,8 @@ repositories {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$KotlinVersion"
     compile "nl.komponents.kovenant:kovenant:$KovenantVersion"
+    compile "nl.komponents.kovenant:kovenant-jfx:$KovenantVersion"
+    compile "nl.komponents.kovenant:kovenant-ui:$KovenantVersion"
     compile "com.github.andrewoma.kwery:core:$KweryVersion"
     compile "mysql:mysql-connector-java:$MySqlConnectorVersion"
 }
