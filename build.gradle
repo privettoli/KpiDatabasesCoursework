@@ -1,9 +1,22 @@
+import static org.codehaus.groovy.runtime.IOGroovyMethods.withCloseable
+
 group 'ua.kpi.databases'
 version '1.0-SNAPSHOT'
 
 buildscript {
     repositories {
         mavenCentral()
+    }
+    ['dependencies.versions', 'src/main/resources/db/settings'].forEach { fileName ->
+        logger.debug("Loading $fileName")
+        def props = new Properties()
+        withCloseable(new FileInputStream("$project.rootDir/${fileName}.properties")) {
+            props.load(it)
+            logger.debug("$fileName loaded. Props: ${props.entrySet()}")
+        }
+        props.each { prop ->
+            project.extensions.extraProperties.set(prop.key as String, prop.value)
+        }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$KotlinVersion"
@@ -25,6 +38,7 @@ repositories {
 }
 
 dependencies {
+    compile "org.slf4j:slf4j-simple:$Slf4jLoggerVersion"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$KotlinVersion"
     compile "nl.komponents.kovenant:kovenant:$KovenantVersion"
     compile "nl.komponents.kovenant:kovenant-jfx:$KovenantVersion"
@@ -41,9 +55,9 @@ liquibase {
     activities {
         main {
             changeLogFile 'src/main/resources/db/list.xml'
-            url 'jdbc:mysql://localhost:3306/db_coursework?createDatabaseIfNotExist=true'
-            username 'root'
-            password 'root'
+            url "$url"
+            username "$username"
+            password "$password"
         }
     }
 }

@@ -5,4 +5,4 @@ package ua.kpi.databases.coursework
  * Here are listed entities of the project
  */
 
-data class Plant(var id: Int, var name: String, var area: Float)
+data class PlantEntity(var id: Int, var name: String, var area: Float)
