@@ -19,11 +19,11 @@ object TechOperationWorkerQualificationDAO : DAO<TechOperationWorkerQualificatio
     }
 
     override fun update(t: TechOperationWorkerQualification) {
-        throw UnsupportedOperationException()
+        secure { throw UnsupportedOperationException() }
     }
 
     override fun findBy(id: Int): TechOperationWorkerQualification? {
-        throw UnsupportedOperationException()
+        return secure { throw UnsupportedOperationException() }
     }
 
     override fun remove(t: TechOperationWorkerQualification) {
