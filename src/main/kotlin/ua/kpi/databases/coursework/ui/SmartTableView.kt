@@ -6,11 +6,9 @@ import javafx.collections.ListChangeListener
 import javafx.event.EventHandler
 import javafx.geometry.Insets
 import javafx.scene.Node
-import javafx.scene.control.Button
+import javafx.scene.control.*
+import javafx.scene.control.Alert.AlertType.ERROR
 import javafx.scene.control.SelectionMode.MULTIPLE
-import javafx.scene.control.TableColumn
-import javafx.scene.control.TableView
-import javafx.scene.control.TextField
 import javafx.scene.control.cell.PropertyValueFactory
 import javafx.scene.control.cell.TextFieldTableCell
 import javafx.scene.layout.HBox
@@ -23,6 +21,8 @@ import nl.komponents.kovenant.ui.successUi
 import org.slf4j.LoggerFactory
 import ua.kpi.databases.coursework.dao.DAO
 import ua.kpi.databases.coursework.i18n
+import ua.kpi.databases.coursework.replace
+import ua.kpi.databases.coursework.with
 import java.util.Collections.singletonList
 import kotlin.collections.*
 import kotlin.reflect.KClass
@@ -123,11 +123,17 @@ object SmartTableView {
                     println("${property?.name} = $text")
                     when (property?.javaField?.type) {
                         Int::class.javaObjectType, Int::class.javaPrimitiveType -> when {
-                            text.isNullOrBlank() -> 0
+                            text.isNullOrBlank() -> {
+                                alert(input.promptText)
+                                return@EventHandler
+                            }
                             else -> text.toInt()
                         }
                         Float::class.javaObjectType, Float::class.javaPrimitiveType -> when {
-                            text.isNullOrBlank() -> 0.0
+                            text.isNullOrBlank() -> {
+                                alert(input.promptText)
+                                return@EventHandler
+                            }
                             else -> text.toFloat()
                         }
                         else -> text
@@ -139,6 +145,18 @@ object SmartTableView {
                 table.items.add(new as T)
             }
         }
+    }
+
+    private fun alert(property: String) {
+        promiseOnUi {
+            Alert(ERROR).apply {
+                title = "alert.not.filled.input.title".i18n()
+                headerText = "alert.not.filled.input.header.text".i18n().replace(":field" with property)
+                contentText = "alert.not.filled.input.contentText".i18n().replace(":field" with property)
+                showAndWait();
+            }
+        }
+        throw IllegalStateException("Property $property should not be null")
     }
 
     private fun <T> idColumnIfContains(fields: Collection<KMutableProperty1<T, out Any>>): Collection<Any?> {
