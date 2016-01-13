@@ -40,6 +40,8 @@ class App : Application() {
                 title = "stage.sql.log.title".i18n()
                 icons.add(Image("icon.png"))
                 scene = Scene(sqlExecutionsList)
+                x = 0.0
+                y = 0.0
                 onCloseRequest = EventHandler { e ->
                     Platform.setImplicitExit(true)
                     Platform.exit()
