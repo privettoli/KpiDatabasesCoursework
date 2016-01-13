@@ -7,7 +7,7 @@ FOREIGN KEY (`plant_id`)
 REFERENCES `plants` (`id`)
   ON UPDATE NO ACTION
   ON DELETE RESTRICT;
--- ROLLBACK ALTER TABLE `tech_operations` DROP FOREIGN KEY `tech_operation_plant_fk`;
+-- rollback ALTER TABLE `tech_operations` DROP FOREIGN KEY `tech_operation_plant_fk`;
 
 -- changeset Anatolii_Papenko:worker_qualifications_tech_operations_fks
 ALTER TABLE `worker_qualifications_tech_operations`
@@ -21,4 +21,4 @@ FOREIGN KEY (`tech_operation_id`)
 REFERENCES `tech_operations` (`id`)
   ON UPDATE NO ACTION
   ON DELETE RESTRICT;
--- ROLLBACK ALTER TABLE `worker_qualifications_tech_operations` DROP FOREIGN KEY `workers_tech_operations_worker_qualification_fk`, DROP FOREIGN KEY `workers_tech_operations_tech_operation_fk`;
+-- rollback ALTER TABLE `worker_qualifications_tech_operations` DROP FOREIGN KEY `workers_tech_operations_worker_qualification_fk`, DROP FOREIGN KEY `workers_tech_operations_tech_operation_fk`;

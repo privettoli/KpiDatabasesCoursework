@@ -33,6 +33,9 @@ import kotlin.text.*
 
 object SmartTableView {
     val logger = LoggerFactory.getLogger(javaClass)
+    val intPattern = Regex("[0-9]*")
+    val floatPattern = Regex("[0-9]*\\.?[0-9]*")
+
     fun <T> createTableEditor(dao: DAO<T>, type: KClass<out Any>, prefWidth: TableView<T>.(KMutableProperty1<T, *>) -> Unit): VBox {
         val fields = type.java.declaredFields.map { it.kotlinProperty as KMutableProperty1<T, out Any> }
         val tableView = TableView<T>().apply {
@@ -47,12 +50,12 @@ object SmartTableView {
         return VBox(tableView, controls)
     }
 
-    private fun <T> loadData(dao: DAO<T>, tableView: TableView<T>) {
+    private fun <T> loadData(dao: DAO<T>, table: TableView<T>) {
         task {
             dao.findAll()
         } successUi { entities ->
-            tableView.items = observableArrayList<T>(entities).apply {
-                addListener(tableChangeListener(dao))
+            table.items = observableArrayList<T>(entities).apply {
+                addListener(tableChangeListener(dao, table))
             }
         }
     }
@@ -64,7 +67,7 @@ object SmartTableView {
         }
     }
 
-    private fun textPropertyListener(textField: TextField, pattern: Regex, defaultValue: Any): ChangeListener<String> {
+    public fun textPropertyListener(textField: TextField, pattern: Regex, defaultValue: Any): ChangeListener<String> {
         return ChangeListener { value, old, new ->
             if (!isValidValue(new, pattern)) {
                 textField.text = when {
@@ -99,8 +102,6 @@ object SmartTableView {
             TextField().apply {
                 id = field.name
                 promptText = (dao.prefix() + field.name).i18n();
-                val intPattern = Regex("[0-9]*")
-                val floatPattern = Regex("[0-9]*\\.?[0-9]*")
                 when (field.javaField?.type) {
                     Int::class.javaObjectType, Int::class.javaPrimitiveType -> {
                         textProperty().addListener(textPropertyListener(this, intPattern, 0))
@@ -166,7 +167,7 @@ object SmartTableView {
         }
     }
 
-    private fun <T> tableChangeListener(dao: DAO<T>): ListChangeListener<T> {
+    private fun <T> tableChangeListener(dao: DAO<T>, table: TableView<T>): ListChangeListener<T> {
         return ListChangeListener { e ->
             task {
                 println("Changing $e")
@@ -174,6 +175,7 @@ object SmartTableView {
                     e.addedSubList.forEach { dao.insert(it) }
                     e.removed.forEach { dao.remove(it) }
                 } while (e.next())
+                loadData(dao, table)
             }
         }
     }

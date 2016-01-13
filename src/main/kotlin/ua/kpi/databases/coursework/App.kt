@@ -13,10 +13,7 @@ import nl.komponents.kovenant.jfx.configureKovenant
 import nl.komponents.kovenant.ui.promiseOnUi
 import org.slf4j.LoggerFactory.getLogger
 import ua.kpi.databases.coursework.dao.DBConnection
-import ua.kpi.databases.coursework.ui.PlantScene
-import ua.kpi.databases.coursework.ui.TechOperationScene
-import ua.kpi.databases.coursework.ui.TechOperationWorkerQualificationScene
-import ua.kpi.databases.coursework.ui.WorkerQualificationScene
+import ua.kpi.databases.coursework.ui.*
 
 class App : Application() {
     companion object {
@@ -28,8 +25,8 @@ class App : Application() {
         promiseOnUi {
             val sqlExecutionsList = ListView<String>().apply {
                 DBConnection.sqlLogCallback = { sqlAction ->
+                    logger.debug("Executed SQL $sqlAction")
                     promiseOnUi {
-                        logger.debug("Executed SQL $sqlAction")
                         items.add(sqlAction)
                     }
                 }
@@ -53,6 +50,7 @@ class App : Application() {
             TechOperationScene.show()
             WorkerQualificationScene.show()
             TechOperationWorkerQualificationScene.show()
+            StatisticScene.show()
         }
     }
 }

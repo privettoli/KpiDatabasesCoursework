@@ -11,12 +11,13 @@
         </or>
     </preConditions>
 
-    <include file="ddl/1-create-init-tables.sql" relativeToChangelogFile="true"/>
-    <include file="ddl/2-add-auto-increment-for-ids.sql" relativeToChangelogFile="true"/>
-    <include file="ddl/3-add-foreign-keys.sql" relativeToChangelogFile="true"/>
+    <include file="ddl/001-create-init-tables.sql" relativeToChangelogFile="true"/>
+    <include file="ddl/002-add-auto-increment-for-ids.sql" relativeToChangelogFile="true"/>
+    <include file="ddl/003-add-foreign-keys.sql" relativeToChangelogFile="true"/>
 
     <!-- let's add few (30) plants-->
-    <include file="dml/1-add-basic-plants.sql" relativeToChangelogFile="true"/>
-    <include file="dml/2-add-basic-worker-qualifications.sql" relativeToChangelogFile="true"/>
-
+    <include file="dml/001-add-basic-plants.sql" relativeToChangelogFile="true"/>
+    <include file="dml/002-add-basic-worker-qualifications.sql" relativeToChangelogFile="true"/>
+    <include file="dml/003-add-tech-operations.sql" relativeToChangelogFile="true"/>
+    <include file="dml/004-add-qualifications-to-operations.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

@@ -7,7 +7,7 @@ CREATE TABLE `plants` (
   `area_ares` DECIMAL(7, 2) UNSIGNED      NOT NULL,
   PRIMARY KEY (`id`)
 );
--- ROLLBACK DROP TABLE `plants`;
+-- rollback DROP TABLE `plants`;
 
 -- changeset Anatolii_Papenko:tech_operations
 CREATE TABLE `tech_operations` (
@@ -19,7 +19,7 @@ CREATE TABLE `tech_operations` (
   `plant_id`                INT UNSIGNED           NOT NULL,
   PRIMARY KEY (`id`)
 );
--- ROLLBACK DROP TABLE `tech_operations`;
+-- rollback DROP TABLE `tech_operations`;
 
 -- changeset Anatolii_Papenko:worker_qualifications
 CREATE TABLE `worker_qualifications` (
@@ -28,11 +28,11 @@ CREATE TABLE `worker_qualifications` (
   `salary_by_hour_uah` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`)
 );
--- ROLLBACK DROP TABLE `worker_qualifications`;
+-- rollback DROP TABLE `worker_qualifications`;
 
 -- changeset Anatolii_Papenko:worker_qualifications_tech_operations
 CREATE TABLE `worker_qualifications_tech_operations` (
   `worker_qualification_id` INT UNSIGNED NOT NULL,
   `tech_operation_id`       INT UNSIGNED NOT NULL
 );
--- ROLLBACK DROP TABLE `worker_qualifications_tech_operations`;
+-- rollback DROP TABLE `worker_qualifications_tech_operations`;

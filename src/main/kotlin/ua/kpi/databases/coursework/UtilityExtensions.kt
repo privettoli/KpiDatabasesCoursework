@@ -42,7 +42,7 @@ public infix fun String.with(that: Any?): Pair<String, String> {
     return Pair(this, "'${that.toString()}'")
 }
 
-private fun sqlExecutionExceptionAlert(e: Exception): Alert {
+public  fun sqlExecutionExceptionAlert(e: Exception): Alert {
     return Alert(ERROR).apply {
         val msg = e.message ?: "error.unexpected".i18n()
         title = "alert.sql.exception.title".i18n()
