@@ -1,24 +1,24 @@
 -- liquibase formatted SQL
 
--- changeset Anatolii_Papenko:tech_operation_plant_fk
-ALTER TABLE `tech_operations`
-ADD CONSTRAINT `tech_operation_plant_fk`
-FOREIGN KEY (`plant_id`)
-REFERENCES `plants` (`id`)
-  ON UPDATE NO ACTION
-  ON DELETE RESTRICT;
--- rollback ALTER TABLE `tech_operations` DROP FOREIGN KEY `tech_operation_plant_fk`;
-
--- changeset Anatolii_Papenko:worker_qualifications_tech_operations_fks
-ALTER TABLE `worker_qualifications_tech_operations`
-ADD CONSTRAINT `workers_tech_operations_worker_qualification_fk`
-FOREIGN KEY (`worker_qualification_id`)
-REFERENCES `worker_qualifications` (`id`)
+-- changeset Roman_Metelyov:national_passport_request_penalty_receipt_fk
+ALTER TABLE `national_passport_requests`
+ADD CONSTRAINT `national_passport_request_penalty_receipt_fk`
+FOREIGN KEY (`penalty_receipts_id`)
+REFERENCES `penalty_receipts` (`id`)
   ON UPDATE NO ACTION
   ON DELETE RESTRICT,
-ADD CONSTRAINT `workers_tech_operations_tech_operation_fk`
-FOREIGN KEY (`tech_operation_id`)
-REFERENCES `tech_operations` (`id`)
+ADD CONSTRAINT `national_passport_requests_issue_reason_fk`
+FOREIGN KEY (`issue_reason_id`)
+REFERENCES `issue_reasons` (`id`)
   ON UPDATE NO ACTION
   ON DELETE RESTRICT;
--- rollback ALTER TABLE `worker_qualifications_tech_operations` DROP FOREIGN KEY `workers_tech_operations_worker_qualification_fk`, DROP FOREIGN KEY `workers_tech_operations_tech_operation_fk`;
+-- rollback ALTER TABLE `national_passport_requests` DROP FOREIGN KEY `national_passport_request_penalty_receipt_fk`, DROP FOREIGN KEY `national_passport_requests_issue_reason_fk`;
+
+-- changeset Roman_Metelyov:registration_request_unregistration_request_fk
+ALTER TABLE `registration_requests`
+ADD CONSTRAINT `registration_request_unregistration_request_fk`
+FOREIGN KEY (`unregistration_request_id`)
+REFERENCES `unregistration_requests` (`id`)
+  ON UPDATE NO ACTION
+  ON DELETE RESTRICT;
+-- rollback ALTER TABLE `registration_requests` DROP FOREIGN KEY `registration_request_unregistration_request_fk`;

@@ -46,11 +46,7 @@ class App : Application() {
                 }
                 show()
             }
-            PlantScene.show()
-            TechOperationScene.show()
-            WorkerQualificationScene.show()
-            TechOperationWorkerQualificationScene.show()
-            StatisticScene.show()
+
         }
     }
 }

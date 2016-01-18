@@ -1,38 +1,66 @@
 -- liquibase formatted SQL
 
--- changeset Anatolii_Papenko:plants
-CREATE TABLE `plants` (
-  `id`         INT UNSIGNED                NOT NULL,
-  `name`       VARCHAR(255) UNIQUE         NOT NULL,
-  `area_ares` DECIMAL(7, 2) UNSIGNED      NOT NULL,
+-- changeset Roman_Metelyov:national_passport_requests
+CREATE TABLE `national_passport_requests` (
+  `id`                                   INT UNSIGNED                NOT NULL,
+  `municipal_service_certificate_number` VARCHAR(255) UNIQUE         NOT NULL,
+  `birth_certificate_series`             VARCHAR(2) UNIQUE           NOT NULL,
+  `birth_certificate_number`             INT UNSIGNED                NOT NULL,
+  `photo`                                BOOLEAN                     NOT NULL,
+  `issue_reason_id`                      INT UNSIGNED                NOT NULL,
+  `penalty_receipt_id`                   INT UNSIGNED                NOT NULL,
+  `police_confirmation`                  BOOLEAN                     NOT NULL,
   PRIMARY KEY (`id`)
 );
--- rollback DROP TABLE `plants`;
+-- rollback DROP TABLE `national_passport_requests`;
 
--- changeset Anatolii_Papenko:tech_operations
-CREATE TABLE `tech_operations` (
-  `id`                      INT UNSIGNED           NOT NULL,
-  `month`                   TINYINT UNSIGNED       NOT NULL,
-  `name`                    VARCHAR(255)           NOT NULL,
-  `fuel_consumption_liters` DECIMAL(7, 2) UNSIGNED NOT NULL,
-  `processing_time_weeks`   DECIMAL(7, 2) UNSIGNED NOT NULL,
-  `plant_id`                INT UNSIGNED           NOT NULL,
+-- changeset Roman_Metelyov:penalty_receipts
+CREATE TABLE `penalty_receipts` (
+  `id`   INT UNSIGNED           NOT NULL,
+  `tax`  DECIMAL(5, 2) UNSIGNED NOT NULL,
+  `summ` DECIMAL(5, 2) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`)
 );
--- rollback DROP TABLE `tech_operations`;
+-- rollback DROP TABLE `penalty_receipts`;
 
--- changeset Anatolii_Papenko:worker_qualifications
-CREATE TABLE `worker_qualifications` (
-  `id`                 INT UNSIGNED NOT NULL,
-  `qualification_name` VARCHAR(255) NOT NULL,
-  `salary_by_hour_uah` INT UNSIGNED NOT NULL,
+-- changeset Roman_Metelyov:issue_reasons
+CREATE TABLE `issue_reasons` (
+  `id`   INT UNSIGNED                NOT NULL,
+  `name` VARCHAR(255) UNIQUE         NOT NULL,
   PRIMARY KEY (`id`)
 );
--- rollback DROP TABLE `worker_qualifications`;
+-- rollback DROP TABLE `issue_reasons`;
 
--- changeset Anatolii_Papenko:worker_qualifications_tech_operations
-CREATE TABLE `worker_qualifications_tech_operations` (
-  `worker_qualification_id` INT UNSIGNED NOT NULL,
-  `tech_operation_id`       INT UNSIGNED NOT NULL
+-- changeset Roman_Metelyov:foreign_passport_requests
+CREATE TABLE `foreign_passport_requests` (
+  `id`                                    INT UNSIGNED                NOT NULL,
+  `national_passport_series`              VARCHAR(2) UNIQUE           NOT NULL,
+  `national_passport_number`              INT UNSIGNED                NOT NULL,
+  `conviction_absence_certificate_number` VARCHAR(255) UNIQUE         NOT NULL,
+  `military_certificate_number`           VARCHAR(255) UNIQUE         NOT NULL,
+  PRIMARY KEY (`id`)
 );
--- rollback DROP TABLE `worker_qualifications_tech_operations`;
+-- rollback DROP TABLE `foreign_passport_requests`;
+
+
+-- changeset Roman_Metelyov:registration_requests
+CREATE TABLE `registration_requests` (
+  `id`                         INT UNSIGNED                NOT NULL,
+  `unregistration_request_id`  INT UNSIGNED                NOT NULL,
+  `registration_permit_number` VARCHAR(255) UNIQUE         NOT NULL,
+  `national_passport_series`   VARCHAR(2) UNIQUE           NOT NULL,
+  `national_passport_number`   INT UNSIGNED                NOT NULL,
+  PRIMARY KEY (`id`)
+);
+-- rollback DROP TABLE `registration_requests`;
+
+
+-- changeset Roman_Metelyov:unregistration_requests
+CREATE TABLE `unregistration_requests` (
+  `id`                                   INT UNSIGNED                NOT NULL,
+  `municipal_service_certificate_number` VARCHAR(255) UNIQUE         NOT NULL,
+  `national_passport_series`             VARCHAR(2) UNIQUE           NOT NULL,
+  `national_passport_number`             INT UNSIGNED                NOT NULL,
+  PRIMARY KEY (`id`)
+);
+-- rollback DROP TABLE `unregistration_requests`;

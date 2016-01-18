@@ -1,16 +1,31 @@
 -- liquibase formatted SQL
 
--- changeset Anatolii_Papenko:plants_auto_increment
-ALTER TABLE `plants`
+-- changeset Roman_Metelyov:national_passport_requests_auto_increment
+ALTER TABLE `national_passport_requests`
 CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
--- rollback ALTER TABLE `plants` CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL ;
+-- rollback ALTER TABLE `national_passport_requests` CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL ;
 
--- changeset Anatolii_Papenko:worker_qualifications_auto_increment
-ALTER TABLE `worker_qualifications`
+-- changeset Roman_Metelyov:penalty_receipts_auto_increment
+ALTER TABLE `penalty_receipts`
 CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
--- rollback ALTER TABLE `worker_qualifications` CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL ;
+-- rollback ALTER TABLE `penalty_receipts` CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL ;
 
--- changeset Anatolii_Papenko:tech_operations_auto_increment
-ALTER TABLE `tech_operations`
+-- changeset Roman_Metelyov:issue_reasons_auto_increment
+ALTER TABLE `issue_reasons`
 CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
--- rollback ALTER TABLE `tech_operations` CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL ;
+-- rollback ALTER TABLE `issue_reasons` CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL ;
+
+-- changeset Roman_Metelyov:foreign_passport_requests_auto_increment
+ALTER TABLE `foreign_passport_requests`
+CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+-- rollback ALTER TABLE `foreign_passport_requests` CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL ;
+
+-- changeset Roman_Metelyov:registration_requests_auto_increment
+ALTER TABLE `registration_requests`
+CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+-- rollback ALTER TABLE `registration_requests` CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL ;
+
+-- changeset Roman_Metelyov:unregistration_requests_auto_increment
+ALTER TABLE `unregistration_requests`
+CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+-- rollback ALTER TABLE `unregistration_requests` CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL ;
