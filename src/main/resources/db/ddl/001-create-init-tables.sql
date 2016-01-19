@@ -15,9 +15,10 @@ CREATE TABLE `national_passport_requests` (
 
 -- changeset Roman_Metelyov:penalty_receipts
 CREATE TABLE `penalty_receipts` (
-  `id`   INT UNSIGNED           NOT NULL,
-  `tax`  DECIMAL(5, 2) UNSIGNED NOT NULL,
-  `summ` DECIMAL(5, 2) UNSIGNED NOT NULL,
+  `id`   INT UNSIGNED               NOT NULL,
+  `name` VARCHAR(255) UNIQUE        NOT NULL,
+  `tax`  DECIMAL(5, 2) UNSIGNED     NOT NULL,
+  `summ` DECIMAL(5, 2) UNSIGNED     NOT NULL,
   PRIMARY KEY (`id`)
 );
 -- rollback DROP TABLE `penalty_receipts`;
