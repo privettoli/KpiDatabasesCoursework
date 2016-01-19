@@ -3,7 +3,7 @@
 -- changeset Roman_Metelyov:national_passport_request_penalty_receipt_fk
 ALTER TABLE `national_passport_requests`
 ADD CONSTRAINT `national_passport_request_penalty_receipt_fk`
-FOREIGN KEY (`penalty_receipts_id`)
+FOREIGN KEY (`penalty_receipt_id`)
 REFERENCES `penalty_receipts` (`id`)
   ON UPDATE NO ACTION
   ON DELETE RESTRICT,

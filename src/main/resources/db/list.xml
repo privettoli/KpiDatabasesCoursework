@@ -14,8 +14,11 @@
     <include file="ddl/004-add-checks.sql" relativeToChangelogFile="true"/>
 
     <!-- let's add few (30) plants-->
-    <include file="dml/001-add-basic-plants.sql" relativeToChangelogFile="true"/>
-    <include file="dml/002-add-basic-worker-qualifications.sql" relativeToChangelogFile="true"/>
-    <include file="dml/003-add-tech-operations.sql" relativeToChangelogFile="true"/>
-    <include file="dml/004-add-qualifications-to-operations.sql" relativeToChangelogFile="true"/>
+    <include file="dml/001-add-issue-reasons.sql" relativeToChangelogFile="true"/>
+    <include file="dml/002-add-penalty-receipts.sql" relativeToChangelogFile="true"/>
+    <include file="dml/003-add-basic-birth-certificates.sql" relativeToChangelogFile="true"/>
+    <include file="dml/004-add-basic-national-passport-requests.sql" relativeToChangelogFile="true"/>
+    <include file="dml/005-add-basic-foreign-passport-requests.sql" relativeToChangelogFile="true"/>
+    <include file="dml/006-add-basic-unregistration-requests.sql" relativeToChangelogFile="true"/>
+    <include file="dml/007-add-basic-registration-requests.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>
