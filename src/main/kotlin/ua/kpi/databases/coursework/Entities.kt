@@ -5,11 +5,14 @@ package ua.kpi.databases.coursework
  * Here are listed entities of the project
  */
 
-data class Plant(var id: Int?, var name: String, var area: Float)
+data class NationalPassportRequest (var id: Int?, var municipalServiceCertificateNumber: String, var birthCertificateSeries: String, var birthCertificateNumber: Int, var photo: Int, var issueReasonId: Int?, var penaltyReceiptId: Int?, var policeConfirmation: Int)
 
-data class TechOperation(var id: Int?, var month: Int, var name: String, var fuelConsumptionLiters: Float,
-                         var processingTimeWeeks: Float, var plantId: Int)
+data class PenaltyReceipt(var id: Int?, var tax: Float, var sum: Float)
 
-data class WorkerQualification(var id: Int?, var qualificationName: String, var salaryByHourUAH: Int)
+data class IssueReason(var id: Int?, var name: String)
 
-data class TechOperationWorkerQualification(var techOperation: Int, var workerQualification: Int)
+data class ForeignPassportRequest(var id: Int?, var nationalPassportSeries: String, var nationalPassportNumber: Int, var convictionAbsenceCertificateNumber: String, var militaryCertificateNumber: String)
+
+data class RegistrationRequest(var id: Int?, var unregistrationRequestId: Int, var registrationPermitNumber: String, var nationalPassportSeries: String, var nationalPassportNumber: Int, var convictionAbsenceCertificateNumber: String, var militaryCertificateNumber: String)
+
+data class UnregistrationRequest(var id: Int?, var municipalServiceCertificateNumber: String, var nationalPassportSeries: String, var nationalPassportNumber: Int)
