@@ -4,12 +4,11 @@
 CREATE TABLE `national_passport_requests` (
   `id`                                   INT UNSIGNED                NOT NULL,
   `municipal_service_certificate_number` VARCHAR(255) UNIQUE         NOT NULL,
-  `birth_certificate_series`             VARCHAR(2) UNIQUE           NOT NULL,
-  `birth_certificate_number`             INT UNSIGNED                NOT NULL,
+  `birth_certificate_id`             INT UNSIGNED                NOT NULL,
   `photo`                                BOOLEAN                     NOT NULL,
   `issue_reason_id`                      INT UNSIGNED                NOT NULL,
-  `penalty_receipt_id`                   INT UNSIGNED                NOT NULL,
-  `police_confirmation`                  BOOLEAN                     NOT NULL,
+  `penalty_receipt_id`                   INT UNSIGNED               ,
+  `police_confirmation`                  BOOLEAN                    ,
   PRIMARY KEY (`id`)
 );
 -- rollback DROP TABLE `national_passport_requests`;
@@ -42,7 +41,6 @@ CREATE TABLE `foreign_passport_requests` (
 );
 -- rollback DROP TABLE `foreign_passport_requests`;
 
-
 -- changeset Roman_Metelyov:registration_requests
 CREATE TABLE `registration_requests` (
   `id`                         INT UNSIGNED                NOT NULL,
@@ -54,7 +52,6 @@ CREATE TABLE `registration_requests` (
 );
 -- rollback DROP TABLE `registration_requests`;
 
-
 -- changeset Roman_Metelyov:unregistration_requests
 CREATE TABLE `unregistration_requests` (
   `id`                                   INT UNSIGNED                NOT NULL,
@@ -64,3 +61,13 @@ CREATE TABLE `unregistration_requests` (
   PRIMARY KEY (`id`)
 );
 -- rollback DROP TABLE `unregistration_requests`;
+
+-- changeset Roman_Metelyov:birth_certificates
+CREATE TABLE `birth_certificates` (
+  `id`                                   INT UNSIGNED                NOT NULL,
+  `birth_certificate_series`             VARCHAR(2) UNIQUE           NOT NULL,
+  `birth_certificate_number`             INT UNSIGNED                NOT NULL,
+  `birth_date`                                DATE NOT NULL  ,
+  PRIMARY KEY (`id`)
+);
+-- rollback DROP TABLE `birth_certificates`;

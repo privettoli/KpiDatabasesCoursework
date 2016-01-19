@@ -29,3 +29,8 @@ CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 ALTER TABLE `unregistration_requests`
 CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 -- rollback ALTER TABLE `unregistration_requests` CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL ;
+
+-- changeset Roman_Metelyov:birth_certificates_auto_increment
+ALTER TABLE `birth_certificates`
+CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+-- rollback ALTER TABLE `birth_certificates` CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL ;

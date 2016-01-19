@@ -5,15 +5,13 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
     <preConditions>
-        <or>
-            <dbms type="mysql"/>
-            <dbms type="mariadb"/>
-        </or>
+        <dbms type="mysql"/>
     </preConditions>
 
     <include file="ddl/001-create-init-tables.sql" relativeToChangelogFile="true"/>
     <include file="ddl/002-add-auto-increment-for-ids.sql" relativeToChangelogFile="true"/>
     <include file="ddl/003-add-foreign-keys.sql" relativeToChangelogFile="true"/>
+    <include file="ddl/004-add-checks.sql" relativeToChangelogFile="true"/>
 
     <!-- let's add few (30) plants-->
     <include file="dml/001-add-basic-plants.sql" relativeToChangelogFile="true"/>
