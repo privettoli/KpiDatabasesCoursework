@@ -11,7 +11,7 @@ FOR EACH ROW
              SELECT `birth_date`
              FROM `birth_certificates`
              WHERE `id` = `birth_certificate_id`)))
-       )) > 18 AND `pernalty_receipt_id` IS NULL)
+       )) > 18 AND `penalty_receipt_id` IS NULL)
     THEN
       SIGNAL SQLSTATE '23001'
       SET MESSAGE_TEXT = 'Late passport obtaining, you should pay your penalty';
