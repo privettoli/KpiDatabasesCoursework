@@ -9,4 +9,4 @@ ADD CONSTRAINT `late_passport_obtaining_chk` CHECK (`birth_certificate_id` IS NO
                                                           FROM `birth_certificates`
                                                           WHERE `id` = `birth_certificate_id`)))
                                                     )) <= 18 OR `pernalty_receipt_id` IS NOT NULL));
--- rollback DROP CONSTRAINT `late_passport_obtaining_chk`;
+-- rollback ALTER TABLE `national_passport_requests` DROP CONSTRAINT `late_passport_obtaining_chk`;
