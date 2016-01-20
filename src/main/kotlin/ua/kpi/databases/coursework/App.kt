@@ -51,7 +51,7 @@ class App : Application() {
                                 putString(sqlExecutionsList.selectionModel.selectedItems.reduce { a, b -> "$a\n$b" })
                             })
                         }
-                    });
+                    })
                 }
                 x = 0.0
                 y = 0.0
