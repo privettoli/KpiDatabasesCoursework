@@ -34,3 +34,8 @@ CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 ALTER TABLE `birth_certificates`
 CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 -- rollback ALTER TABLE `birth_certificates` CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL ;
+
+-- changeset Roman_Metelyov:penalty_receipt_types_auto_increment
+ALTER TABLE `penalty_receipt_types`
+CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+-- rollback ALTER TABLE `penalty_receipt_types` CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL ;

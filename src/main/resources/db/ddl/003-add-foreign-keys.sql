@@ -31,3 +31,12 @@ REFERENCES `birth_certificates` (`id`)
   ON UPDATE NO ACTION
   ON DELETE RESTRICT;
 -- rollback ALTER TABLE `national_passport_requests` DROP FOREIGN KEY `national_passport_request_birth_certificate_fk`;
+
+-- changeset Roman_Metelyov:penalty_receipts_penalty_receipt_type_fk
+ALTER TABLE `penalty_receipts`
+ADD CONSTRAINT `penalty_receipts_penalty_receipt_type_fk`
+FOREIGN KEY (`type_id`)
+REFERENCES `penalty_receipt_types` (`id`)
+  ON UPDATE NO ACTION
+  ON DELETE RESTRICT;
+-- rollback ALTER TABLE `penalty_receipts` DROP FOREIGN KEY `penalty_receipts_penalty_receipt_type_fk`;
