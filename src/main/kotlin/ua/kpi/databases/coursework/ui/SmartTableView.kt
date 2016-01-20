@@ -121,7 +121,6 @@ object SmartTableView {
                     val property = fields.find { it.name == input.id }
                     val text = input.text
                     input.clear()
-                    println("${property?.name} = $text")
                     when (property?.javaField?.type) {
                         Int::class.javaObjectType, Int::class.javaPrimitiveType -> when {
                             !text.isNullOrEmpty() -> text.toInt()
@@ -142,9 +141,7 @@ object SmartTableView {
                         else -> text
                     }
                 }).toTypedArray()
-                println("Parameters ${parameters.map { "" + it }} Size: ${parameters.size}")
                 val new = type.constructors.first().call(*parameters)
-                println("Adding new element $new")
                 table.items.add(new as T)
             }
         }
@@ -172,7 +169,6 @@ object SmartTableView {
     private fun <T> tableChangeListener(dao: DAO<T>, table: TableView<T>): ListChangeListener<T> {
         return ListChangeListener { e ->
             task {
-                println("Changing $e")
                 do {
                     e.addedSubList.forEach { dao.insert(it) }
                     e.removed.forEach { dao.remove(it) }
