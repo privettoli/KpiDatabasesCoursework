@@ -6,14 +6,21 @@ import javafx.event.EventHandler
 import javafx.geometry.Insets
 import javafx.scene.Scene
 import javafx.scene.control.ListView
+import javafx.scene.control.SelectionMode.MULTIPLE
 import javafx.scene.image.Image
+import javafx.scene.input.Clipboard.getSystemClipboard
+import javafx.scene.input.ClipboardContent
+import javafx.scene.input.KeyCode.C
+import javafx.scene.input.KeyCodeCombination
+import javafx.scene.input.KeyCombination.CONTROL_ANY
 import javafx.stage.Stage
 import nl.komponents.kovenant.Kovenant
 import nl.komponents.kovenant.jfx.configureKovenant
 import nl.komponents.kovenant.ui.promiseOnUi
 import org.slf4j.LoggerFactory.getLogger
 import ua.kpi.databases.coursework.dao.DBConnection
-import ua.kpi.databases.coursework.ui.*
+import ua.kpi.databases.coursework.ui.NationalPassportRequestScene
+import kotlin.collections.reduce
 
 class App : Application() {
     companion object {
@@ -24,6 +31,7 @@ class App : Application() {
         configureKovenant()
         promiseOnUi {
             val sqlExecutionsList = ListView<String>().apply {
+                selectionModel.selectionMode = MULTIPLE
                 DBConnection.sqlLogCallback = { sqlAction ->
                     logger.debug("Executed SQL $sqlAction")
                     promiseOnUi {
@@ -36,7 +44,15 @@ class App : Application() {
             with (primaryStage) {
                 title = "stage.sql.log.title".i18n()
                 icons.add(Image("icon.png"))
-                scene = Scene(sqlExecutionsList)
+                scene = Scene(sqlExecutionsList).apply {
+                    accelerators.put(KeyCodeCombination(C, CONTROL_ANY), Runnable {
+                        promiseOnUi {
+                            getSystemClipboard().setContent(ClipboardContent().apply {
+                                putString(sqlExecutionsList.selectionModel.selectedItems.reduce { a, b -> "$a\n$b" })
+                            })
+                        }
+                    });
+                }
                 x = 0.0
                 y = 0.0
                 onCloseRequest = EventHandler { e ->
@@ -46,8 +62,8 @@ class App : Application() {
                 }
                 show()
             }
+            NationalPassportRequestScene.show()
         }
-        NationalPassportRequestScene.show()
     }
 }
 
