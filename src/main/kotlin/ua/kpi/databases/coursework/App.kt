@@ -13,6 +13,7 @@ import javafx.scene.input.ClipboardContent
 import javafx.scene.input.KeyCode.C
 import javafx.scene.input.KeyCodeCombination
 import javafx.scene.input.KeyCombination.CONTROL_ANY
+import javafx.scene.input.KeyCombination.SHORTCUT_ANY
 import javafx.stage.Stage
 import nl.komponents.kovenant.Kovenant
 import nl.komponents.kovenant.jfx.configureKovenant
@@ -45,7 +46,7 @@ class App : Application() {
                 title = "stage.sql.log.title".i18n()
                 icons.add(Image("icon.png"))
                 scene = Scene(sqlExecutionsList).apply {
-                    accelerators.put(KeyCodeCombination(C, CONTROL_ANY), Runnable {
+                    accelerators.put(KeyCodeCombination(C, SHORTCUT_ANY), Runnable {
                         promiseOnUi {
                             getSystemClipboard().setContent(ClipboardContent().apply {
                                 putString(sqlExecutionsList.selectionModel.selectedItems.reduce { a, b -> "$a\n$b" })
