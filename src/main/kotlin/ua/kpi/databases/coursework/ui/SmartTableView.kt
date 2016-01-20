@@ -36,13 +36,13 @@ object SmartTableView {
     val intPattern = Regex("[0-9]*")
     val floatPattern = Regex("[0-9]*\\.?[0-9]*")
 
-    fun <T> createTableEditor(dao: DAO<T>, type: KClass<out Any>, prefWidth: TableView<T>.(KMutableProperty1<T, *>) -> Unit): VBox {
+    fun <T> createTableEditor(dao: DAO<T>, type: KClass<out Any>, unitInsideEveryTableColumn: TableView<T>.(KMutableProperty1<T, *>) -> Unit): VBox {
         val fields = type.java.declaredFields.map { it.kotlinProperty as KMutableProperty1<T, out Any> }
         val tableView = TableView<T>().apply {
             isEditable = true
             selectionModel.selectionMode = MULTIPLE
             columns.addAll(fields.map { field ->
-                createTableColumn(dao, field).apply { prefWidth(field) }
+                createTableColumn(dao, field).apply { unitInsideEveryTableColumn(field) }
             })
             loadData(dao, this)
         }
