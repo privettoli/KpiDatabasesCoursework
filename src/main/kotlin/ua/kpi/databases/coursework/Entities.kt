@@ -17,6 +17,6 @@ data class IssueReason(var id: Int?, var name: String)
 
 data class ForeignPassportRequest(var id: Int?, var nationalPassportSeries: String, var nationalPassportNumber: Int, var convictionAbsenceCertificateNumber: String, var militaryCertificateNumber: String)
 
-data class RegistrationRequest(var id: Int?, var unregistrationRequestId: Int, var registrationPermitNumber: String, var nationalPassportSeries: String, var nationalPassportNumber: Int, var convictionAbsenceCertificateNumber: String, var militaryCertificateNumber: String)
+data class RegistrationRequest(var id: Int?, var unregistrationRequestId: Int, var registrationPermitNumber: String, var nationalPassportSeries: String, var nationalPassportNumber: Int)
 
 data class UnregistrationRequest(var id: Int?, var municipalServiceCertificateNumber: String, var nationalPassportSeries: String, var nationalPassportNumber: Int)

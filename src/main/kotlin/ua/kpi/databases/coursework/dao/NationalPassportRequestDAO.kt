@@ -57,8 +57,8 @@ object NationalPassportRequestDAO : DAO<NationalPassportRequest> {
     override fun findBy(id: Int): NationalPassportRequest? {
         val sql = "SELECT * FROM `national_passport_requests` WHERE `id` = :id;"
         logSQL(sql.replace(":id" with id))
-        val plant = secure { session.select(sql, mapOf("id" to id)) { parseRow(it) } }
-        return plant?.firstOrNull()
+        val national_passport_request = secure { session.select(sql, mapOf("id" to id)) { parseRow(it) } }
+        return national_passport_request?.firstOrNull()
     }
 
     override fun findAll(): List<NationalPassportRequest> {

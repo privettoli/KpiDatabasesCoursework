@@ -29,7 +29,7 @@ CREATE TABLE `penalty_receipt_types` (
   `name` VARCHAR(255) UNIQUE        NOT NULL,
   PRIMARY KEY (`id`)
 );
--- rollback DROP TABLE `penalty_receipts`;
+-- rollback DROP TABLE `penalty_receipt_types`;
 
 -- changeset Roman_Metelyov:issue_reasons
 CREATE TABLE `issue_reasons` (
