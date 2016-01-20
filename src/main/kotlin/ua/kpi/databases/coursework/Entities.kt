@@ -7,7 +7,7 @@ package ua.kpi.databases.coursework
 
 data class NationalPassportRequest(var id: Int?, var municipalServiceCertificateNumber: String, var birthCertificateId: Int, var photo: Int, var issueReasonId: Int, var penaltyReceiptId: Int?, var policeConfirmationNumber: Int?)
 
-data class BirthCertificate(var id: Int?, var birthCertificateSeries: String, var birthCertificateNumber: Int)
+data class BirthCertificate(var id: Int?, var series: String, var number: Int, var date: String)
 
 data class PenaltyReceipt(var id: Int?, var typeId: Int, var tax: Float, var sum: Float)
 
