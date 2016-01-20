@@ -40,9 +40,9 @@ object BirthCertificateDAO : DAO<BirthCertificate> {
 
     override fun update(t: BirthCertificate) {
         val sql = "UPDATE `birth_certificates` SET " +
-                "`series` = :series, " +
-                "`number` = :number, " +
-                "`date` = :date " +
+                "`birth_certificate_series` = :series, " +
+                "`birth_certificate_number` = :number, " +
+                "`birth_date` = :date " +
                 "WHERE `id` = :id;"
         logSQL(merge(sql, t))
         secure { session.update(sql, mapper(t)) }

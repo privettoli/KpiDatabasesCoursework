@@ -41,10 +41,10 @@ object ForeignPassportRequestDAO : DAO<ForeignPassportRequest> {
 
     override fun update(t: ForeignPassportRequest) {
         val sql = "UPDATE `foreign_passport_requests` SET " +
-                "`nationalPassportSeries` = :nationalPassportSeries, " +
-                "`nationalPassportNumber` = :nationalPassportNumber, " +
-                "`convictionAbsenceCertificateNumber` = :convictionAbsenceCertificateNumber, " +
-                "`militaryCertificateNumber` = :militaryCertificateNumber "  +
+                "`national_passport_series` = :nationalPassportSeries, " +
+                "`national_passport_number` = :nationalPassportNumber, " +
+                "`conviction_absence_certificate_number` = :convictionAbsenceCertificateNumber, " +
+                "`military_certificate_number` = :militaryCertificateNumber "  +
                 "WHERE `id` = :id;"
         logSQL(merge(sql, t))
         secure { session.update(sql, mapper(t)) }
