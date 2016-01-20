@@ -1,3 +1,4 @@
+/*
 package ua.kpi.databases.coursework.dao
 
 import com.github.andrewoma.kwery.core.Row
@@ -64,4 +65,4 @@ object WorkerQualificationDAO : DAO<WorkerQualification> {
 
     private fun parseRow(it: Row) = WorkerQualification(it.int("id"), it.string("qualification_name"),
             it.int("salary_by_hour_uah"))
-}
+}*/

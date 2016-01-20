@@ -1,3 +1,4 @@
+/*
 package ua.kpi.databases.coursework.dao
 
 import com.github.andrewoma.kwery.core.Row
@@ -69,4 +70,4 @@ object TechOperationDAO : DAO<TechOperation> {
 
     private fun parseRow(it: Row) = TechOperation(it.int("id"), it.int("month"), it.string("name"),
             it.float("fuel_consumption_liters"), it.float("processing_time_weeks"), it.int("plant_id"))
-}
+}*/

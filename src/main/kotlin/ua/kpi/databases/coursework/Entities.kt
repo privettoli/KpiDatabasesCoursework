@@ -5,9 +5,13 @@ package ua.kpi.databases.coursework
  * Here are listed entities of the project
  */
 
-data class NationalPassportRequest (var id: Int?, var municipalServiceCertificateNumber: String, var birthCertificateSeries: String, var birthCertificateNumber: Int, var photo: Int, var issueReasonId: Int?, var penaltyReceiptId: Int?, var policeConfirmation: Int)
+data class NationalPassportRequest(var id: Int?, var municipalServiceCertificateNumber: String, var birthCertificateId: Int, var photo: Int, var issueReasonId: Int, var penaltyReceiptId: Int?, var policeConfirmationNumber: Int?)
 
-data class PenaltyReceipt(var id: Int?, var tax: Float, var sum: Float)
+data class BirthCertificate(var id: Int?, var birthCertificateSeries: String, var birthCertificateNumber: Int)
+
+data class PenaltyReceipt(var id: Int?, var typeId: Int, var tax: Float, var sum: Float)
+
+data class PenaltyReceiptType(var id: Int?, var name: String)
 
 data class IssueReason(var id: Int?, var name: String)
 

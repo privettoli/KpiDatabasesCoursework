@@ -5,24 +5,22 @@ import javafx.scene.Scene
 import javafx.scene.image.Image
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
-import ua.kpi.databases.coursework.WorkerQualification
-import ua.kpi.databases.coursework.dao.WorkerQualificationDAO
+import ua.kpi.databases.coursework.NationalPassportRequest
+import ua.kpi.databases.coursework.dao.NationalPassportRequestDAO
 import ua.kpi.databases.coursework.i18n
 
-
-object WorkerQualificationScene {
+object NationalPassportRequestScene {
     fun show() {
-        val plantsTable: VBox = SmartTableView.createTableEditor(WorkerQualificationDAO, WorkerQualification::class) {
+        val table: VBox = SmartTableView.createTableEditor(NationalPassportRequestDAO, NationalPassportRequest::class) {
             prefWidth = when (it) {
-                WorkerQualification::qualificationName -> 100.0
-                WorkerQualification::salaryByHourUAH -> 100.0
+                NationalPassportRequest::policeConfirmationNumber -> 100.0
                 else -> prefWidth
             }
         }
         Stage().apply {
-            title = "stage.worker.qualifications.title".i18n()
+            title = "stage.national.passport.request.title".i18n()
             icons.add(Image("icon.png"))
-            scene = Scene((plantsTable).apply {
+            scene = Scene((table).apply {
                 spacing = 8.0
                 padding = Insets(8.0)
                 setPrefSize(384.0, 730.0)

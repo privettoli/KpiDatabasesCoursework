@@ -46,8 +46,8 @@ class App : Application() {
                 }
                 show()
             }
-
         }
+        NationalPassportRequestScene.show()
     }
 }
 

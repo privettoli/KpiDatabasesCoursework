@@ -8,7 +8,7 @@ CREATE TABLE `national_passport_requests` (
   `photo`                                BOOLEAN                     NOT NULL,
   `issue_reason_id`                      INT UNSIGNED                NOT NULL,
   `penalty_receipt_id`                   INT UNSIGNED,
-  `police_confirmation`                  BOOLEAN,
+  `police_confirmation_number`           BOOLEAN,
   PRIMARY KEY (`id`)
 );
 -- rollback DROP TABLE `national_passport_requests`;

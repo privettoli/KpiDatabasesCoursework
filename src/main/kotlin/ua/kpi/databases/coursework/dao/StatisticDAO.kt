@@ -1,3 +1,4 @@
+/*
 package ua.kpi.databases.coursework.dao
 
 import ua.kpi.databases.coursework.replace
@@ -21,4 +22,4 @@ object StatisticDAO {
             }
         } ?: emptyList()
     }
-}
+}*/
