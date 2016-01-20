@@ -13,7 +13,7 @@ object BirthCertificateScene {
     fun show() {
         val table: VBox = SmartTableView.createTableEditor(BirthCertificateDAO, BirthCertificate::class) {
             prefWidth = when (it) {
-                BirthCertificate::birthDate -> 100.0
+                BirthCertificate::date -> 100.0
                 else -> prefWidth
             }
         }
@@ -23,7 +23,7 @@ object BirthCertificateScene {
             scene = Scene((table).apply {
                 spacing = 8.0
                 padding = Insets(8.0)
-                setPrefSize(384.0, 730.0)
+                setPrefSize(730.0, 384.0)
             })
             show()
         }

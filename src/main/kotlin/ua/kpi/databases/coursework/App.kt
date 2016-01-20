@@ -12,7 +12,6 @@ import javafx.scene.input.Clipboard.getSystemClipboard
 import javafx.scene.input.ClipboardContent
 import javafx.scene.input.KeyCode.C
 import javafx.scene.input.KeyCodeCombination
-import javafx.scene.input.KeyCombination.CONTROL_ANY
 import javafx.scene.input.KeyCombination.SHORTCUT_ANY
 import javafx.stage.Stage
 import nl.komponents.kovenant.Kovenant
@@ -20,7 +19,7 @@ import nl.komponents.kovenant.jfx.configureKovenant
 import nl.komponents.kovenant.ui.promiseOnUi
 import org.slf4j.LoggerFactory.getLogger
 import ua.kpi.databases.coursework.dao.DBConnection
-import ua.kpi.databases.coursework.ui.NationalPassportRequestScene
+import ua.kpi.databases.coursework.ui.*
 import kotlin.collections.reduce
 
 class App : Application() {
@@ -63,7 +62,14 @@ class App : Application() {
                 }
                 show()
             }
+            BirthCertificateScene.show()
+            ForeignPassportRequestScene.show()
+            IssueReasonScene.show()
             NationalPassportRequestScene.show()
+            PenaltyReceiptScene.show()
+            PenaltyReceiptTypeScene.show()
+            RegistrationRequestScene.show()
+            UnregistrationRequestScene.show()
         }
     }
 }
