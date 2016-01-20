@@ -124,18 +124,20 @@ object SmartTableView {
                     println("${property?.name} = $text")
                     when (property?.javaField?.type) {
                         Int::class.javaObjectType, Int::class.javaPrimitiveType -> when {
-                            text.isNullOrBlank() -> {
+                            !text.isNullOrEmpty() -> text.toInt()
+                            property?.returnType?.isMarkedNullable!! -> null
+                            else -> {
                                 alert(input.promptText)
                                 return@EventHandler
                             }
-                            else -> text.toInt()
                         }
                         Float::class.javaObjectType, Float::class.javaPrimitiveType -> when {
-                            text.isNullOrBlank() -> {
+                            !text.isNullOrEmpty() -> text.toFloat()
+                            property?.returnType?.isMarkedNullable!! -> null
+                            else -> {
                                 alert(input.promptText)
                                 return@EventHandler
                             }
-                            else -> text.toFloat()
                         }
                         else -> text
                     }
