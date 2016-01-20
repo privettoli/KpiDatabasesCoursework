@@ -7,7 +7,6 @@ import javafx.scene.control.TextArea
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.GridPane.setHgrow
 import javafx.scene.layout.GridPane.setVgrow
-import javafx.scene.layout.Priority
 import javafx.scene.layout.Priority.ALWAYS
 import nl.komponents.kovenant.ui.promiseOnUi
 import org.slf4j.LoggerFactory
@@ -39,10 +38,13 @@ public infix fun String.replace(pair: Pair<String, String>): String {
 }
 
 public infix fun String.with(that: Any?): Pair<String, String> {
-    return Pair(this, "'${that.toString()}'")
+    return Pair(this, when (that) {
+        null -> "NULL"
+        else -> "'${that.toString()}'"
+    })
 }
 
-public  fun sqlExecutionExceptionAlert(e: Exception): Alert {
+public fun sqlExecutionExceptionAlert(e: Exception): Alert {
     return Alert(ERROR).apply {
         val msg = e.message ?: "error.unexpected".i18n()
         title = "alert.sql.exception.title".i18n()
